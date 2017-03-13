@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Оплата</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="./css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="./css/cart_style.css">
+</head>
+	<body>
+		<div class="wrapper-payment">
+			<header class="header">
+				<ul class="nav-items">
+					<li class="nav-items__item">
+						<a href="cart_1.html">
+							<div class="nav-items__circle nav-items__circle_done">
+								<div class="nav-items__name nav-items__name_accessible">
+									КОРЗИНА
+								</div>
+							</div>
+						</a>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle nav-items__circle_accessible">
+							2
+							<div class="nav-items__name nav-items__name_accessible">
+								ОПЛАТА
+							</div>
+						</div>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle">
+							3
+							<div class="nav-items__name">
+								ДОСТАВКА
+							</div>
+						</div>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle">
+							4
+							<div class="nav-items__name">
+								ЗАВЕРШЕНО
+							</div>
+						</div>
+					</li>
+				</ul>
+			</header>
+			<section class="section-payment clearfix">
+				<div class="card-view">
+					<div class="card-view__card">
+						КАРТА
+					</div>
+					<div class="card-view__view">
+						PAYPAL
+					</div>
+				</div>
+				<div class="form-card__front-side">
+					<div class="form-card__data-card">
+						<input class="form-card__number form-card__style-input" placeholder="Номер карты" tabindex="1">
+						<input class="form-card__month form-card__style-input" placeholder="Месяц" tabindex="2">
+						<input class="form-card__year form-card__style-input" placeholder="Год" tabindex="3">
+					</div>
+					<div class="form-card__logotips">
+						<img class="form-card__master-card" src="images/master-card.svg" alt="master-card">
+						<img class="form-card__visa" src="images/visa.svg" alt="visa">
+					</div>
+					<input class="form-card__full-name form-card__style-input" placeholder="Имя Владельца" tabindex="4">
+				</div>
+				<div class="form-card__back-side">
+					<div class="form-card__band">
+					</div>
+					<input class="form-card__cvv form-card__style-input" placeholder="CVV" tabindex="5">
+					<div class="form-card__prompt">
+						Код на обратной стороне
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<a class="button-general button-back" href="cart_1.html">Вернуться назад</a>
+				<a class="button-general button-pay" href="cart_3.html">Оплатить</a>
+			</section>
+		</div>
+	</body>
+</html>
