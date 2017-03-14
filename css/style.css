@@ -270,6 +270,7 @@ categories.html
 	width: 73.281em;
 	margin: 0 auto;
 	margin-top: 3.163rem;
+	overflow: hidden;
 }
 
 .product-applications{
@@ -279,7 +280,6 @@ categories.html
 	padding: 2.688rem 1.875rem 0 1.063rem;
 	margin-bottom: -20000px;
 	padding-bottom: 20000px;
-	overflow: hidden;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 }
 
