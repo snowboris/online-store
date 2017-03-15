@@ -1,0 +1,22 @@
+{
+  "name": "online-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snowboris/online-store.git"
+  },
+  "author": "Olenev Boris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snowboris/online-store/issues"
+  },
+  "homepage": "https://github.com/snowboris/online-store#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.8"
+  }
+}
