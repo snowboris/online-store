@@ -71,6 +71,10 @@
 	}
 	];
 	*/
+	function clickByApplication(e){
+		alert(e.getAttribute("idapp"));
+	}
+
 	function show_catalog_applications(arr){
 		var mapObject = createMapObject();
 		//for(var i = 0; i<arr_catalog_applications.length; i++)
@@ -86,7 +90,8 @@
 				
 				a_link.href = "#";
 				a_link.innerHTML= mapObject[item.guid];
-				
+				a_link.setAttribute("idapp",item.id);
+				a_link.addEventListener("click",function(){clickByApplication(this);});
 				li_items.appendChild(a_link);
 				ul_catalog_applications.appendChild(li_items);
 			}
