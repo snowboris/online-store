@@ -128,7 +128,8 @@
 			myTime.className="application-package__date";//rezult.time_class;
 			var myDate = new Date(rezult.lastUpdate);
 			myTime.setAttribute("datetime", myDate.toLocaleFormat("%Y-%m-%d"));//"2016-09-09";//rezult.time_datetime;
-			myTime.innerHTML=myDate.toLocaleFormat("%d %B %Y");//"2016-09-09";//rezult.time_text;
+			myTime.innerHTML=myDate.toLocaleFormat("%d ")+getSlantingMonth(myDate.toLocaleFormat("%m"))
+			+myDate.toLocaleFormat(" %Y"); //%B %Y");//"2016-09-09";//rezult.time_text;
 
 			link.appendChild(myIMG);
 			link.appendChild(myHEADER);
@@ -250,6 +251,37 @@
 			this.myUl.innerHTML="";
 			this.showElements(i-1); 
 		},
+	}
+
+		function getSlantingMonth(mm){
+		switch(mm*1){
+			case 1: return "января";
+				break;
+			case 2: return "февраля";
+				break;
+			case 03: return "марта";
+				break;
+			case 4: return "апреля";
+				break;
+			case 5: return "мая";
+				break;
+			case 6: return "июня";
+				break;
+			case 7: return "июля";
+				break;
+			case 8: return "августа";
+				break;
+			case 9: return "сентября";
+				break;
+			case 10: return "октября";
+				break;
+			case 11: return "ноября";
+				break;
+			case 12: return "декабря";
+				break;
+			default: return "error getMonth!!!";
+				break;
+		}
 	}
 
 	window.onload = function()
