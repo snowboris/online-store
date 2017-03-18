@@ -61,6 +61,16 @@ input{
 	color: #adafb2;
 }
 
+.nav-menu__icon{
+	background: url("../images/iconBasket.svg") no-repeat 0 0;
+	background-size: 30px 30px;
+	width: 30px;
+	height: 30px;
+	padding-left: 35px;
+	font-weight: bold;
+	color: red;
+}
+
 .nav-menu__item:not(:first-child){
 	margin: 0 0 0 2.563rem;
 }
@@ -467,7 +477,7 @@ categories.html
 	border-radius: 1.5rem;
 	outline: 0;
 	background: white;
-	padding-top: 0.688rem;
+	/*padding-top: 0.688rem; link change to button*/ 
 }
 
 .button-in-basket:hover{

@@ -1,81 +1,5 @@
 ;(function(){
 
-	/*var arr_catalog_applications = [{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Стандартный пакет"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "new-cft-bank.html",
-		a_link_text: "Новый ЦФТ-Банк"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Cash Management"
-	},
-	{
-		a_link_class : "product-applications__link product-applications__link_active",
-		a_link_href: "catalog-rent-of-safes.html",
-		a_link_text: "Аренда сейфов"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Банковские гарантии"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Казначейство"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Страхование"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Факторинговое обслуживание"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Переводы средств"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Расчетный центр"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Пластиковые карты"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Финансовый мониторинг"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Депозиты и вклады"
-	},
-	{
-		a_link_class : "product-applications__link",
-		a_link_href: "#",
-		a_link_text: "Инвестиции"
-	}
-	];
-	*/
-/*
-	var catalog_applications = {
-
-	}*/
 	function getSlantingMonth(mm){
 		switch(mm*1){
 			case 1: return "января";
@@ -106,6 +30,8 @@
 				break;
 		}
 	}
+
+
 
 	function renderingCardApp(idapp, arrObjectsInfoApp){
 		//alert("arrObjectsInfoApp");
@@ -231,7 +157,7 @@
 	}
 
 
-	function getMapUrlParametrs(){
+/*	function getMapUrlParametrs(){
 		var arrUrlSearch = location.search.substr(1).split("&");
 		var mapUrlParam = {};
 
@@ -241,8 +167,40 @@
 			
 		});
 		return mapUrlParam;
-	}
+	}*/
+	Basket = function(){
+		this.number = 0;
+		this.idElem = -1;
+		var btnAddTovarBasket = document.querySelector(".button-in-basket");
+		//this.addTovarInBasket();
+		//self=this;
+		btnAddTovarBasket.addEventListener("click",this.addTovarInBasket.bind(this));
+	};
+		/*function addTovarInBasket(e){
+		alert("tt!");
+	}*/
 
+
+	Basket.prototype.addTovarInBasket = function(){
+		//alert("Eee!");'='
+		this.number++;
+		var activeElem = document.querySelector(".product-applications__link_active");
+		this.idElem = activeElem.getAttribute("idapp");
+
+		var basketNumberTovar = document.querySelector(".nav-menu__icon");
+		basketNumberTovar.innerText=this.number; 
+
+		var numCurrentTovar = localStorage.getItem(this.idElem);
+
+		//alert(numCurrentTovar);
+		localStorage.setItem(this.idElem, numCurrentTovar*1+1);
+
+		var btnAddInBasket = document.querySelector(".button-in-basket");
+
+		btnAddInBasket.innerText = "В корзину ("+numCurrentTovar+")"; 
+		
+
+	};
 
 	window.onload = function(){
 
@@ -270,6 +228,8 @@
 		}
 
 		xhrInfoApp.send();
+		
+		var basket = new Basket();
 		
 	}
 })();
