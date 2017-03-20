@@ -465,6 +465,13 @@ categories.html
 	display: block;
 }
 
+.price-tovar{
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	margin-top: 18px;
+}
+
 .button-in-basket{
 	display: block;
 	height: 3rem;

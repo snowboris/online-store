@@ -1,5 +1,5 @@
 ;(function(){
-
+	var basket;
 	function getSlantingMonth(mm){
 		switch(mm*1){
 			case 1: return "января";
@@ -35,7 +35,54 @@
 
 	function renderingCardApp(idapp, arrObjectsInfoApp){
 		//alert("arrObjectsInfoApp");
-		var elemHeader = document.querySelector(".content__header_tovar-margin");
+
+		var elemCurrentTovar = document.querySelector(".content");
+		
+		if(elemCurrentTovar!==null)elemCurrentTovar.remove();
+
+		var templateCard = document.querySelector(".template-card").content;
+		var cardHTML = templateCard.cloneNode(true);
+		//alert(cardHTML);
+		var elemHeader = cardHTML.querySelector(".content__header_tovar-margin");
+		var elemTime = cardHTML.querySelector(".date-published"); 
+		var categoriesContent = document.querySelector(".wrapper-categories-tovar");
+		var elemDescriptions = cardHTML.querySelector(".description-text");
+		var elemRequirement = cardHTML.querySelector(".requirement");
+		var elemImageTovar = cardHTML.querySelector(".image-tovar__image");
+		var elemFeatures = cardHTML.querySelector(".list-main-functions");
+		var elemPriceTovar = cardHTML.querySelector(".price-tovar");
+
+		elemHeader.innerText = arrObjectsInfoApp[idapp].title;
+
+		var getDate = new Date(arrObjectsInfoApp[idapp].lastUpdate*1000);
+		elemTime.innerHTML = getDate.toLocaleFormat("%d ") + getSlantingMonth(getDate.toLocaleFormat("%m"))
+		+getDate.toLocaleFormat(" %Y");
+
+		var descriptionDelimiter = arrObjectsInfoApp[idapp].description.replace(/\n/g,"<br/>");
+		elemDescriptions.innerHTML = descriptionDelimiter;
+
+		elemRequirement.innerHTML = "<strong>Требования: </strong>" + arrObjectsInfoApp[idapp].requirements;
+		elemDescriptions.appendChild(elemRequirement);
+
+		elemImageTovar.src = getImageSrcByGuid(arrObjectsInfoApp[idapp].guid);
+
+		elemPriceTovar.innerText = "$" + arrObjectsInfoApp[idapp].price;
+
+		var elemFeaturesLi;
+		arrObjectsInfoApp[idapp].features.forEach(function(item,i,arr){
+			elemFeaturesLi = document.createElement("li");
+			elemFeaturesLi.className = "list-main-functions_item";
+			elemFeaturesLi.innerHTML = item;
+			elemFeatures.appendChild(elemFeaturesLi);
+		});
+		//alert(categoriesContent);
+		
+		categoriesContent.appendChild(cardHTML);
+
+		var btnAddTovarBasket = document.querySelector(".button-in-basket");
+		btnAddTovarBasket.addEventListener("click",function(){basket.addTovarInBasket();});
+		
+		/*var elemHeader = document.querySelector(".content__header_tovar-margin");
 		var elemTime = document.querySelector(".date-published");
 		var elemDescriptions = document.querySelector(".description-text");
 		var elemImageTovar = document.querySelector(".image-tovar__image");
@@ -48,7 +95,9 @@
 		elemTime.innerHTML = getDate.toLocaleFormat("%d ") + getSlantingMonth(getDate.toLocaleFormat("%m"))
 		+getDate.toLocaleFormat(" %Y");
 
-		elemDescriptions.innerHTML = arrObjectsInfoApp[idapp].description;
+		
+
+		elemDescriptions.innerHTML = descriptionDelimiter;
 
 		var elemRequirement = document.createElement("div");
 		elemRequirement.className="requirement";
@@ -70,7 +119,7 @@
 			elemFeaturesLi.className = "list-main-functions_item";
 			elemFeaturesLi.innerHTML = item;
 			elemFeatures.appendChild(elemFeaturesLi);
-		});
+		});*/
 	}
 
 	function clickByApplication(element){
@@ -172,6 +221,7 @@
 		this.number = 0;
 		this.idElem = -1;
 		var btnAddTovarBasket = document.querySelector(".button-in-basket");
+
 		var linkToBasket = document.querySelector(".nav-menu__icon");
 		//this.addTovarInBasket();
 		//self=this;
@@ -185,7 +235,6 @@
 
 
 	Basket.prototype.addTovarInBasket = function(){
-		//alert("Eee!");'='
 		
 		var activeElem = document.querySelector(".product-applications__link_active");
 		this.idElem = activeElem.getAttribute("idapp");
@@ -194,8 +243,9 @@
 
 		//var numCurrentTovar = localStorage.getItem(this.idElem);
 
-		//alert(numCurrentTovar);
+	
 		//alert(localStorage.getItem(this.idElem));
+		//alert(localStorage.length);
 		if(localStorage.getItem(this.idElem)==null){
 			//alert("asdf");
 			localStorage.setItem(this.idElem, 1);
@@ -318,7 +368,7 @@
 
 		xhrInfoApp.send();
 		
-		var basket = new Basket();
+		basket = new Basket();
 		
 	}
 })();
