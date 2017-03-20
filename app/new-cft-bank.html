@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
+<!-- 	<link rel="stylesheet" type="text/css" href="./css/cart_style.css"> -->
 </head>
 	<body>
 		<header class="header">
@@ -116,84 +117,86 @@
 		</div>
 		<template class="template__cart1">
 			<div class="wrapper-basket">
-			<header class="header">
-				<ul class="nav-items">
-					<li class="nav-items__item">
-						<div class="nav-items__circle nav-items__circle_accessible">
-							1
-							<div class="nav-items__name nav-items__name_accessible">
-								КОРЗИНА
+				<header class="header">
+					<ul class="nav-items">
+						<li class="nav-items__item">
+							<div class="nav-items__circle nav-items__circle_accessible">
+								1
+								<div class="nav-items__name nav-items__name_accessible">
+									КОРЗИНА
+								</div>
+							</div>
+						</li>
+						<li class="nav-items__item">
+							<div class="nav-items__circle">
+								2
+								<div class="nav-items__name nav-items__name_accessible">
+									ОПЛАТА
+								</div>
+							</div>
+						</li>
+						<li class="nav-items__item">
+							<div class="nav-items__circle">
+								3
+								<div class="nav-items__name">
+									ДОСТАВКА
+								</div>
+							</div>
+						</li>
+						<li class="nav-items__item">
+							<div class="nav-items__circle">
+								4
+								<div class="nav-items__name">
+									ЗАВЕРШЕНО
+								</div>
+							</div>
+						</li>
+					</ul>
+				</header>
+				<section class="basket">
+					<table class="basket-table">
+						<tr class="basket-table__string_header">
+							<th class="basket-table__cell_header-column"></th>
+							<th class="basket-table__cell_header-column">СТОИМОСТЬ</th>
+							<th class="basket-table__cell_header-column">ИТОГО</th>
+							<th class="basket-table__cell_header-column"></th>
+						</tr>
+						<!-- <tr class="basket-table__string">
+							<td class="basket-table__cell_header-string">Оформление договора</td>
+							<td class="basket-table__cell">$399</td>
+							<td class="basket-table__cell">$399</td>
+							<td class="basket-table__cell basket-table__cell_column-four">
+								<button class="button-delete">
+									<img  class="button-delete__image" src="images/button-delete.svg" alt="button-delete">
+								</button>
+							</td>
+						</tr> -->
+					</table>
+					<footer class="footer">
+						<div class="total-amount">
+							<div class="total-amount__total-header">
+								ИТОГО
+							</div>
+							<div class="total-amount__sum">
+								&#36;549<span class="total-amount__cents">99</span>
 							</div>
 						</div>
-					</li>
-					<li class="nav-items__item">
-						<div class="nav-items__circle">
-							2
-							<div class="nav-items__name nav-items__name_accessible">
-								ОПЛАТА
-							</div>
-						</div>
-					</li>
-					<li class="nav-items__item">
-						<div class="nav-items__circle">
-							3
-							<div class="nav-items__name">
-								ДОСТАВКА
-							</div>
-						</div>
-					</li>
-					<li class="nav-items__item">
-						<div class="nav-items__circle">
-							4
-							<div class="nav-items__name">
-								ЗАВЕРШЕНО
-							</div>
-						</div>
-					</li>
-				</ul>
-			</header>
-			<section class="basket">
-				<table class="basket-table">
-					<tr class="basket-table__string_header">
-						<th class="basket-table__cell_header-column"></th>
-						<th class="basket-table__cell_header-column">СТОИМОСТЬ</th>
-						<th class="basket-table__cell_header-column">ИТОГО</th>
-						<th class="basket-table__cell_header-column"></th>
-					</tr>
-					<tr class="basket-table__string">
-						<td class="basket-table__cell_header-string">Расчет штрафов</td>
-						<td class="basket-table__cell">$139,99</td>
-						<td class="basket-table__cell">$139,99</td>
-						<td class="basket-table__cell basket-table__cell_column-four">
-							<button class="button-delete">
-								<img class="button-delete__image" src="images/button-delete.svg" alt="button-delete">
-							</button>
-						</td>
-					</tr>
-					<tr class="basket-table__string">
-						<td class="basket-table__cell_header-string">Оформление договора</td>
-						<td class="basket-table__cell">$399</td>
-						<td class="basket-table__cell">$399</td>
-						<td class="basket-table__cell basket-table__cell_column-four">
-							<button class="button-delete">
-								<img  class="button-delete__image" src="images/button-delete.svg" alt="button-delete">
-							</button>
-						</td>
-					</tr>
-				</table>
-				<footer class="footer">
-					<div class="total-amount">
-						<div class="total-amount__total-header">
-							ИТОГО
-						</div>
-						<div class="total-amount__sum">
-							&#36;549<span class="total-amount__cents">99</span>
-						</div>
-					</div>
-					<a class="button-general button-next" href="cart_2.html">ДАЛЕЕ</a>
-				</footer>
-			</section>
-		</div>
+						<a class="button-general button-next" href="cart_2.html">ДАЛЕЕ</a>
+					</footer>
+				</section>
+			</div>
+		</template>
+		<template class="template-basket-table__string">
+			<tr class="basket-table__string">
+				<td class="basket-table__cell_header-string"></td>
+				<td class="basket-table__cell"></td>
+				<td class="basket-table__cell"></td>
+				<td class="basket-table__cell basket-table__cell_column-four">
+					<button class="button-delete">
+						<img class="button-delete__image" src="images/button-delete.svg" alt="button-delete">
+					</button>
+				</td>
+			</tr>
 		</template>
 	</body>
 </html>

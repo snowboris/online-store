@@ -172,9 +172,12 @@
 		this.number = 0;
 		this.idElem = -1;
 		var btnAddTovarBasket = document.querySelector(".button-in-basket");
+		var linkToBasket = document.querySelector(".nav-menu__icon");
 		//this.addTovarInBasket();
 		//self=this;
 		btnAddTovarBasket.addEventListener("click",this.addTovarInBasket.bind(this));
+		linkToBasket.addEventListener("click",this.onClickBasket.bind(this));
+		localStorage.clear();
 	};
 		/*function addTovarInBasket(e){
 		alert("tt!");
@@ -183,26 +186,112 @@
 
 	Basket.prototype.addTovarInBasket = function(){
 		//alert("Eee!");'='
-		this.number++;
+		
 		var activeElem = document.querySelector(".product-applications__link_active");
 		this.idElem = activeElem.getAttribute("idapp");
 
-		var basketNumberTovar = document.querySelector(".nav-menu__icon");
-		basketNumberTovar.innerText=this.number; 
-
-		var numCurrentTovar = localStorage.getItem(this.idElem);
-
-		//alert(numCurrentTovar);
-		localStorage.setItem(this.idElem, numCurrentTovar*1+1);
-
 		var btnAddInBasket = document.querySelector(".button-in-basket");
 
-		btnAddInBasket.innerText = "В корзину ("+numCurrentTovar+")"; 
+		//var numCurrentTovar = localStorage.getItem(this.idElem);
+
+		//alert(numCurrentTovar);
+		//alert(localStorage.getItem(this.idElem));
+		if(localStorage.getItem(this.idElem)==null){
+			//alert("asdf");
+			localStorage.setItem(this.idElem, 1);
+			this.number++;
+			var basketNumberTovar = document.querySelector(".nav-menu__icon");
+			basketNumberTovar.innerText=this.number; 
+			btnAddInBasket.innerText="В корзине!!!";
+		}else {
+			alert("Товар в корзине!!!");
+		}
+
+		
+
+		//btnAddInBasket.innerText = "В корзину ("+numCurrentTovar+")"; 
 		
 
 	};
 
+	Basket.prototype.onClickBasket = function(){
+		var elemHeader = document.querySelector(".header");
+		var elemContent = document.querySelector(".wrapper-categories-tovar");
+		var elemLink = document.querySelector("link[href='./css/style.css']");
+		elemLink.href="./css/cart_style.css"
+		//alert(elemLink.href);
+		elemHeader.remove();
+		elemContent.remove();
+
+		var templateCart1 = document.querySelector(".template__cart1").content;
+
+		var elemDivBasket = templateCart1.cloneNode(true);
+	//	alert(elemDivBasket);
+		document.querySelector("body").appendChild(elemDivBasket);
+
+
+		xhr = new XMLHttpRequest();
+
+		xhr.open("GET","api/app_info.json",true);
+
+		xhr.onload=function(){
+			var tovars = JSON.parse(xhr.responseText);
+			var elemTable = document.querySelector(".basket-table");
+			var amount = 0;
+			//alert(templateCart1);
+			
+			//elemTable.appendChild(rez);
+			//if(localStorage.length!==0){
+			//for(var i = 0; i<localStorage.length; i++){
+			if(localStorage.length!=0)
+			for(var key in localStorage){
+				//alert(key);
+				if(isNaN(parseInt(key))) continue;
+				var currentTovar;
+				for(var i = 0; i<tovars.length; i++){ //находим товар с нужным id
+					if (tovars[i].id===parseInt(key)) {
+						currentTovar = tovars[i];
+						break;
+					}
+				}
+				//if(3 instanceof Number)
+				//alert(3 instanceof Number);
+
+				var templateStringTable = document.querySelector(".template-basket-table__string").content;
+				var stringTable = templateStringTable.cloneNode(true);
+				var tdHeaderTovar = stringTable.querySelector(".basket-table__cell_header-string");
+				var value = stringTable.querySelectorAll(".basket-table__cell");
+					alert( currentTovar.price);
+
+				value[0].innerText ="$" +currentTovar.price;
+				value[1].innerText ="$" + currentTovar.price;
+				amount+=currentTovar.price;
+				tdHeaderTovar.innerText=currentTovar.title;
+				//alert(stringTable);
+				elemTable.appendChild(stringTable);
+			}
+
+			var elemAmount = document.querySelector(".total-amount__sum");
+			elemAmount.innerText="$"+amount;
+			var fraction = amount.toFixed(2) - amount;
+			alert(fraction);
+			//}
+
+			/*	var string = document.querySelector(".basket-table__string_header");
+				//alert(string);
+				var getString = string.cloneNode(true);
+				alert(getString);*/
+			//}
+		}
+
+		xhr.send();
+
+	};
+
 	window.onload = function(){
+		//var temp='s34ds';
+
+		//alert(isNaN(parseInt(temp)));
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","api/apps_list.json",true);
