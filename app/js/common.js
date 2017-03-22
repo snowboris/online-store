@@ -31,10 +31,7 @@
 		}
 	}
 
-
-
 	function renderingCardApp(idapp, arrObjectsInfoApp){
-		//alert("arrObjectsInfoApp");
 
 		var elemCurrentTovar = document.querySelector(".content");
 		
@@ -42,7 +39,6 @@
 
 		var templateCard = document.querySelector(".template-card").content;
 		var cardHTML = templateCard.cloneNode(true);
-		//alert(cardHTML);
 		var elemHeader = cardHTML.querySelector(".content__header_tovar-margin");
 		var elemTime = cardHTML.querySelector(".date-published"); 
 		var categoriesContent = document.querySelector(".wrapper-categories-tovar");
@@ -75,69 +71,19 @@
 			elemFeaturesLi.innerHTML = item;
 			elemFeatures.appendChild(elemFeaturesLi);
 		});
-		//alert(categoriesContent);
 		
 		categoriesContent.appendChild(cardHTML);
 
 		var btnAddTovarBasket = document.querySelector(".button-in-basket");
 		btnAddTovarBasket.addEventListener("click",function(){basket.addTovarInBasket();});
-		
-		/*var elemHeader = document.querySelector(".content__header_tovar-margin");
-		var elemTime = document.querySelector(".date-published");
-		var elemDescriptions = document.querySelector(".description-text");
-		var elemImageTovar = document.querySelector(".image-tovar__image");
-		var elemFeatures = document.querySelector(".list-main-functions");
-
-		//alert(idapp);
-		elemHeader.innerHTML = arrObjectsInfoApp[idapp].title;
-
-		var getDate = new Date(arrObjectsInfoApp[idapp].lastUpdate*1000);
-		elemTime.innerHTML = getDate.toLocaleFormat("%d ") + getSlantingMonth(getDate.toLocaleFormat("%m"))
-		+getDate.toLocaleFormat(" %Y");
-
-		
-
-		elemDescriptions.innerHTML = descriptionDelimiter;
-
-		var elemRequirement = document.createElement("div");
-		elemRequirement.className="requirement";
-
-		elemRequirement.innerHTML="<strong>Требования: </strong>" + arrObjectsInfoApp[idapp].requirements;
-
-		//var elemRequirementText = document.createElement("strong");
-		//elemRequirementText.innerHTML="Требования:";
-
-		//elemRequirement.appendChild(elemRequirementText);
-		elemDescriptions.appendChild(elemRequirement);
-
-		elemImageTovar.src=getImageSrcByGuid(arrObjectsInfoApp[idapp].guid);
-
-		elemFeatures.innerHTML = "";
-
-		arrObjectsInfoApp[idapp].features.forEach(function(item,i,arr){
-			var elemFeaturesLi = document.createElement("li");
-			elemFeaturesLi.className = "list-main-functions_item";
-			elemFeaturesLi.innerHTML = item;
-			elemFeatures.appendChild(elemFeaturesLi);
-		});*/
 	}
 
 	function clickByApplication(element){
-		//alert(e.getAttribute("idapp"));
-		//location.assign("new-cft-bank.html?idapp="+e.getAttribute("idapp"));
-		//alert("click");
-		//renderingCardApp();
-	/*if(element.getAttribute("idapp") === {
-					a_link.className = "product-applications__link";//arr_catalog_applications[i].a_link_class;
-				}else a_link.className = "product-applications__link product-applications__link_active"*/
-		
 		var lastLinkActive = document.querySelector(".product-applications__link_active");
 		if(lastLinkActive!=null)
 		lastLinkActive.className="product-applications__link";
 
 		element.className="product-applications__link product-applications__link_active";
-
-				
 
 		xhr = new XMLHttpRequest();
 
@@ -151,19 +97,17 @@
 
 		xhr.send();
 
-		
-
 	}
 
-	
-
 	function show_catalog_applications(arr){
-		//var mapObject = createMapObject();
-		//for(var i = 0; i<arr_catalog_applications.length; i++)
+		var elemWripperTovar = document.querySelector(".wrapper-categories-tovar");
+		var template_elemAside = document.querySelector(".template-catalog-applications-aside").content;
+		var elemAside = template_elemAside.cloneNode(this);
+
+		var ul_catalog_applications = elemAside.querySelector(".product-applications__menu");
+
 		arr.forEach(function(item,i,arr_catalog_applications){
 			{
-
-				var ul_catalog_applications = document.querySelector(".product-applications__menu");
 				var li_items = document.createElement("li");
 				li_items.className = "product-applications__list-item";
 				var a_link = document.createElement("a");
@@ -183,6 +127,8 @@
 				ul_catalog_applications.appendChild(li_items);
 			}
 		});
+
+		elemWripperTovar.appendChild(elemAside);
 	}
 
 	function getImageSrcByGuid(guid){
@@ -205,33 +151,19 @@
 		return mapObject[guid];
 	}
 
-
-/*	function getMapUrlParametrs(){
-		var arrUrlSearch = location.search.substr(1).split("&");
-		var mapUrlParam = {};
-
-		arrUrlSearch.forEach(function(item,i,arr){
-			var arrTemp = item.split("=");
-			mapUrlParam[arrTemp[0]] = arrTemp[1];
-			
-		});
-		return mapUrlParam;
-	}*/
 	Basket = function(){
-		this.number = 0;
+		this.number = localStorage.length;
 		this.idElem = -1;
+		this.amount = 0; //Итоговая сумма в корзине
 		var btnAddTovarBasket = document.querySelector(".button-in-basket");
 
 		var linkToBasket = document.querySelector(".nav-menu__icon");
-		//this.addTovarInBasket();
-		//self=this;
-		btnAddTovarBasket.addEventListener("click",this.addTovarInBasket.bind(this));
+		linkToBasket.innerText = this.number;
+
 		linkToBasket.addEventListener("click",this.onClickBasket.bind(this));
-		localStorage.clear();
 	};
-		/*function addTovarInBasket(e){
-		alert("tt!");
-	}*/
+
+	
 
 
 	Basket.prototype.addTovarInBasket = function(){
@@ -241,13 +173,7 @@
 
 		var btnAddInBasket = document.querySelector(".button-in-basket");
 
-		//var numCurrentTovar = localStorage.getItem(this.idElem);
-
-	
-		//alert(localStorage.getItem(this.idElem));
-		//alert(localStorage.length);
 		if(localStorage.getItem(this.idElem)==null){
-			//alert("asdf");
 			localStorage.setItem(this.idElem, 1);
 			this.number++;
 			var basketNumberTovar = document.querySelector(".nav-menu__icon");
@@ -256,29 +182,47 @@
 		}else {
 			alert("Товар в корзине!!!");
 		}
-
-		
-
-		//btnAddInBasket.innerText = "В корзину ("+numCurrentTovar+")"; 
-		
-
 	};
 
+	Basket.prototype.delTovarInBasket = function(element){
+		var elemAmount = document.querySelector(".total-amount__sum");
+
+		element.parentNode.parentNode.remove(); //от тега Button добираемся до tr
+		localStorage.removeItem(element.getAttribute("idapp"));
+		this.number--;
+		this.amount-= (element.parentNode.parentNode.querySelector(".basket-table__cell").textContent).substr(1)*1;
+		
+		var fraction = (this.amount - Math.floor(this.amount)).toFixed(2)*100;
+		var fractionString = "";
+			if(fraction<10) fractionString = "0"+fraction;
+			else fractionString = fraction;
+
+			elemAmount.innerHTML="$"+Math.floor(this.amount)+"<span class='total-amount__cents'>"+fractionString+"</span>";
+	};
+
+
 	Basket.prototype.onClickBasket = function(){
+		var thisBasket = this;
 		var elemHeader = document.querySelector(".header");
-		var elemContent = document.querySelector(".wrapper-categories-tovar");
+		var elemContent = document.querySelector("div");
 		var elemLink = document.querySelector("link[href='./css/style.css']");
-		elemLink.href="./css/cart_style.css"
-		//alert(elemLink.href);
+		var elemBtnNext;
+		var elemItemCircle;
+		var templateHeaderCart = document.querySelector(".template-header-cart").content;
+		this.amount=0;
+		if(elemLink!==null) elemLink.href="./css/cart_style.css"
 		elemHeader.remove();
-		elemContent.remove();
+		if(elemContent!==null) elemContent.remove();
 
 		var templateCart1 = document.querySelector(".template__cart1").content;
 
 		var elemDivBasket = templateCart1.cloneNode(true);
-	//	alert(elemDivBasket);
-		document.querySelector("body").appendChild(elemDivBasket);
 
+		elemBtnNext = elemDivBasket.querySelector(".button-next");
+		elemBtnNext.addEventListener("click",this.onClickInCart1Next.bind(this));
+
+		elemItemCircle = elemDivBasket.querySelectorAll(".nav-items__item");
+		document.querySelector("body").appendChild(elemDivBasket);
 
 		xhr = new XMLHttpRequest();
 
@@ -287,12 +231,7 @@
 		xhr.onload=function(){
 			var tovars = JSON.parse(xhr.responseText);
 			var elemTable = document.querySelector(".basket-table");
-			var amount = 0;
-			//alert(templateCart1);
-			
-			//elemTable.appendChild(rez);
-			//if(localStorage.length!==0){
-			//for(var i = 0; i<localStorage.length; i++){
+
 			if(localStorage.length!=0)
 			for(var key in localStorage){
 				//alert(key);
@@ -304,44 +243,188 @@
 						break;
 					}
 				}
-				//if(3 instanceof Number)
-				//alert(3 instanceof Number);
 
 				var templateStringTable = document.querySelector(".template-basket-table__string").content;
 				var stringTable = templateStringTable.cloneNode(true);
 				var tdHeaderTovar = stringTable.querySelector(".basket-table__cell_header-string");
 				var value = stringTable.querySelectorAll(".basket-table__cell");
-					alert( currentTovar.price);
+				var elemBtnImgDel = stringTable.querySelector(".button-delete");
 
 				value[0].innerText ="$" +currentTovar.price;
 				value[1].innerText ="$" + currentTovar.price;
-				amount+=currentTovar.price;
+
+				thisBasket.amount+=currentTovar.price;
+
 				tdHeaderTovar.innerText=currentTovar.title;
-				//alert(stringTable);
+
+				elemBtnImgDel.setAttribute("idapp",currentTovar.id);
+				elemBtnImgDel.addEventListener("click",function(){ thisBasket.delTovarInBasket(this);});
 				elemTable.appendChild(stringTable);
 			}
 
 			var elemAmount = document.querySelector(".total-amount__sum");
-			elemAmount.innerText="$"+amount;
-			var fraction = amount.toFixed(2) - amount;
-			alert(fraction);
-			//}
+			var fraction = (thisBasket.amount - Math.floor(thisBasket.amount)).toFixed(2)*100;
+			var fractionString = "";
+			if(fraction<10) fractionString = "0"+fraction;
+			else fractionString = fraction;
 
-			/*	var string = document.querySelector(".basket-table__string_header");
-				//alert(string);
-				var getString = string.cloneNode(true);
-				alert(getString);*/
-			//}
+			elemAmount.innerHTML="$"+Math.floor(thisBasket.amount)+"<span class='total-amount__cents'>"+fractionString+"</span>";
 		}
 
 		xhr.send();
 
 	};
 
-	window.onload = function(){
-		//var temp='s34ds';
+	Basket.prototype.onClickInCart1Next = function(){
+		var elemWrapperDiv = document.querySelector("div");
+		//var elemBody = document.querySelector("body");
+		var elemHeader = document.querySelector(".header");
+		var elemContent = document.querySelector("section");
+		
+		var templateHeaderCart = document.querySelector(".template-header-cart").content;
+		var elemBtnPay; 
 
-		//alert(isNaN(parseInt(temp)));
+		elemHeader.remove();
+		elemHeader = templateHeaderCart.cloneNode(true);
+		var elemCircleOne = elemHeader.querySelectorAll(".nav-items__circle");
+		var elemNameCircle = elemHeader.querySelectorAll(".nav-items__name");
+
+
+		elemWrapperDiv.className="wrapper-payment";
+		elemCircleOne[0].innerText="";
+		elemCircleOne[0].appendChild(elemNameCircle[0]);
+		elemCircleOne[0].className = "nav-items__circle nav-items__circle_done";
+		elemCircleOne[0].addEventListener("click",this.onClickBasket.bind(this));
+
+		elemCircleOne[1].className = "nav-items__circle nav-items__circle_accessible";
+		elemNameCircle[1].className = "nav-items__name nav-items__name_accessible";
+
+		if(elemContent!==null) elemContent.remove();
+
+		var templateCart2 = document.querySelector(".template__cart2").content;
+		var elemCart2 = templateCart2.cloneNode(true);
+		elemBtnPay = elemCart2.querySelector(".button-pay");
+		elemBtnPay.addEventListener("click",this.onClickInCart2Pay.bind(this));
+		
+		elemBtnBack = elemCart2.querySelector(".button-back");
+		elemBtnBack.addEventListener("click",this.onClickBasket.bind(this));
+
+		elemWrapperDiv.appendChild(elemHeader);
+		elemWrapperDiv.appendChild(elemCart2);		
+	}
+
+	Basket.prototype.onClickInCart2Pay = function(){
+		var elemDivLoading = document.createElement("div");
+		var elemBody = document.querySelector("body");
+		elemDivLoading.className = "basket-loading";
+		elemBody.appendChild(elemDivLoading);
+		var thisBasket = this;
+		setTimeout(function(){
+			elemDivLoading.remove();
+			var elemContent = document.querySelector("section");
+			var elemWripperDiv = document.querySelector("div");
+
+			var elemHeader = document.querySelector(".header");
+			elemHeader.remove();
+			var templateCart3 = document.querySelector(".template__cart3").content;
+			var elemCart3 = templateCart3.cloneNode(true);
+			var elemBtnFinish = elemCart3.querySelector(".button-finish");
+			var templateHeaderCart = document.querySelector(".template-header-cart").content;
+			elemHeader = templateHeaderCart.cloneNode(true);
+
+			var elemCircleArr = elemHeader.querySelectorAll(".nav-items__circle");
+			var elemNameCircle = elemHeader.querySelectorAll(".nav-items__name");
+
+			elemCircleArr[0].innerText="";
+			elemCircleArr[1].innerText="";
+			elemCircleArr[0].appendChild(elemNameCircle[0]);
+			elemCircleArr[1].appendChild(elemNameCircle[1]);
+			elemCircleArr[0].className = "nav-items__circle nav-items__circle_done";
+			elemCircleArr[1].className = "nav-items__circle nav-items__circle_done";
+			elemCircleArr[1].addEventListener("click",thisBasket.onClickInCart1Next.bind(thisBasket));
+
+			elemCircleArr[2].className = "nav-items__circle nav-items__circle_accessible";
+			elemNameCircle[2].className = "nav-items__name nav-items__name_accessible";
+
+			elemWripperDiv.className = "wrapper-delivery";
+
+			elemContent.remove();
+
+			elemBtnFinish.addEventListener("click",thisBasket.onClickCart3Finish.bind(thisBasket));
+			elemWripperDiv.appendChild(elemHeader);
+			elemWripperDiv.appendChild(elemCart3);
+		},Math.random()*5000);
+	}
+
+	Basket.prototype.onClickCart3Finish = function(){
+		var elemDivLoading = document.createElement("div");
+		var elemBody = document.querySelector("body");
+		elemDivLoading.className = "basket-loading";
+		elemBody.appendChild(elemDivLoading);
+		var thisBasket = this;
+
+		setTimeout(function(){
+			elemDivLoading.remove();
+			var elemHeader = document.querySelector(".header");
+			var elemWripperDiv = elemHeader.parentNode; // document.querySelector(".wrapper-delivery");
+			var elemContent = document.querySelector("section");
+			var elemHeader = document.querySelector(".header");
+			var elemBtnClose;
+			elemHeader.remove();
+			
+			var templateCart3 = document.querySelector(".template-header-cart").content;
+			elemHeader = templateCart3.cloneNode(true);
+
+			var elemCircleArr = elemHeader.querySelectorAll(".nav-items__circle");
+			var elemNameCircle = elemHeader.querySelectorAll(".nav-items__name");
+			
+			var templateCart4 = document.querySelector(".template__cart4").content;
+			var elemCart4 = templateCart4.cloneNode(true);
+
+			elemBtnClose = elemCart4.querySelector(".button-close");
+			elemBtnClose.addEventListener("click",thisBasket.onClickBtnClose.bind(thisBasket));
+
+			//alert(elemWripperDiv);
+			elemWripperDiv.className = "wrapper-completed";
+			elemContent.remove();
+
+			elemCircleArr[0].innerText = "";
+			elemCircleArr[1].innerText = "";
+			elemCircleArr[2].innerText = "";
+			elemCircleArr[0].appendChild(elemNameCircle[0]);
+			elemCircleArr[1].appendChild(elemNameCircle[1]);
+			elemCircleArr[2].appendChild(elemNameCircle[2]);
+			elemCircleArr[2].addEventListener("click",thisBasket.onClickInCart2Pay.bind(thisBasket));
+			elemCircleArr[0].className = "nav-items__circle nav-items__circle_done";
+			elemCircleArr[1].className = "nav-items__circle nav-items__circle_done";
+			elemCircleArr[2].className = "nav-items__circle nav-items__circle_done";
+			elemCircleArr[3].className = "nav-items__circle nav-items__circle_accessible";
+
+			elemNameCircle[2].className = "nav-items__name nav-items__name_accessible";
+			elemNameCircle[3].className = "nav-items__name nav-items__name_accessible";
+
+			elemWripperDiv.appendChild(elemHeader);
+			elemWripperDiv.appendChild(elemCart4);
+		},Math.random()*5000);
+	}
+
+	Basket.prototype.onClickBtnClose = function(){
+		this.number = 0;
+		localStorage.clear();
+		var elemPage = document.querySelector(".wrapper-completed");
+		elemPage.remove();
+		var elemLinkCss = document.querySelector("link[href='./css/cart_style.css']");
+		elemLinkCss.href = "./css/style.css";
+		var elemBody = document.querySelector("body");
+		var template__catalogApp = document.querySelector(".template__catalog-applications").content;
+		var catalogApp = template__catalogApp.cloneNode(this);
+		var categoriesContent = document.createElement("div");
+		var linkToBasket = catalogApp.querySelector(".nav-menu__icon");
+		categoriesContent.className = "wrapper-categories-tovar";
+		elemBody.appendChild(catalogApp);
+		elemBody.appendChild(categoriesContent);
+
+		linkToBasket.addEventListener("click",this.onClickBasket.bind(this));
 
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","api/apps_list.json",true);
@@ -354,8 +437,33 @@
 
 		xhr.send();
 
-		/*alert(location.search);
-		//location.search*/
+		xhrInfoApp = new XMLHttpRequest();
+
+		xhrInfoApp.open("GET","api/app_info.json",true);
+		
+		xhrInfoApp.onload = function(e){
+			var arrObjAppInfo = JSON.parse(xhrInfoApp.responseText);
+			renderingCardApp(0,arrObjAppInfo);
+			
+		}
+
+		xhrInfoApp.send();
+	}
+
+
+	window.onload = function(){
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("GET","api/apps_list.json",true);
+
+
+		xhr.onload = function(e){
+			var arr_catalog_applications = JSON.parse(xhr.responseText);
+			show_catalog_applications(arr_catalog_applications);
+		}
+
+		xhr.send();
+
 		xhrInfoApp = new XMLHttpRequest();
 
 		xhrInfoApp.open("GET","api/app_info.json",true);

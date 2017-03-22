@@ -5,7 +5,6 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./css/normalize.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
-<!-- 	<link rel="stylesheet" type="text/css" href="./css/cart_style.css"> -->
 </head>
 	<body>
 		<header class="header">
@@ -32,102 +31,54 @@
 			</article>
 		</header>
 		<div class="wrapper-categories-tovar clearfix">
+		</div>
+		<!-- Templates down -->
+		<template class="template__catalog-applications">
+			<header class="header">
+				<article class="header__insert">
+					<a href="index.html">
+						<img class="logo" src="images/logo.svg" alt="logotip">
+					</a>
+					<nav >
+						<ul class="nav-menu">
+							<li class="nav-menu__item">
+								<a href="index.html">ГЛАВНАЯ</a>
+							</li>
+							<li class="nav-menu__item nav-menu__item_active">
+								<a href="#">КАТАЛОГ ПРИЛОЖЕНИЙ</a>
+							</li>
+							<li class="nav-menu__item">
+								<a href="#">О КОМПАНИИ</a>
+							</li>
+							<li class="nav-menu__item nav-menu__icon">
+								0
+							</li>
+						</ul>
+					</nav>
+				</article>
+			</header>
+		</template>
+		<template class="template-catalog-applications-aside">
 			<aside class="product-applications">
 				<h2 class="product-applications__header">Каталог приложений</h2>
 				<nav>
 					<ul class="product-applications__menu">
-					<!-- 	<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Стандартный пакет</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link product-applications__link_active" href="new-cft-bank.html">Новый ЦФТ-Банк</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Cash Management</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="catalog-rent-of-safes.html">Аренда сейфов</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Банковские гарантии</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Казначейство</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Страхование</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Факторинговое обслуживание</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Переводы средств</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Расчетный центр</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Пластиковые карты</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Финансовый мониторинг</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Депозиты и вклады</a>
-						</li>
-						<li class="product-applications__list-item">
-							<a class="product-applications__link" href="#">Инвестиции</a>
-						</li> -->
 					</ul>
 				</nav>
 			</aside>
-			<section class="content content_tovar-padding">
-				<h1 class="h1 content__header_tovar-margin">НОВЫЙ ЦФТ-БАНК</h1>
-				<div class="description">
-					<time datetime="2016-09-09" class="date-published">09 сентября 2016</time>
-					<div class="description-text">
-						Приложение лицензировано в 25 банках<br>
-						Тип Приложения: Базовое<br>
-						Разработчик: ЦФТ<br>
-						Код по каталогу: 1B365001<br>
-						<div class="requirement">
-							<strong>Требования:</strong> совместимо с v.14.1, ТЯ v.7.4.0.0 и выше, при наличии лицензии на Проигрыватель форм в web
-						</div>
-					</div>
-				</div>
-				<div class="block-image-tovar">
-					<img class="image-tovar__image" src="images/phone.png" alt="phone">
-					<button class="button-in-basket">В корзину</button>
-				</div>
-				<div class="clearfix"></div>
-				<h2 class="h1 content__header_tovar-margin content__header_tovar-margin-two">Основные функции</h2>
-				<ul class="list-main-functions">
-					<li class="list-main-functions_item">
-						Выполнение операций по банковским продуктам, используемым клиентом, и оформление новых продуктов банка непосредственно из Единого окна
-					</li>
-					<li class="list-main-functions_item">
-						Возможность определения одного банковского продукта для отображения в Едином окне как рекомендуемого (для формирования списка адресно рекомендуемых продуктов необходима лицензия на Приложение Управление целевым маркетингом) 
-					</li>
-					<li class="list-main-functions_item">
-						Начисление баллов операционным сотрудникам за выполнение операций по банковским продуктам и отображение результатов в Едином окне (для использования гибкой настройки условий начисления баллов необходима лицензия на Приложение Игрофикация)
-					</li>
-				</ul>
-			</section>
-			
-		</div>
-		<!-- Templates down -->
+		</template>
 		<template class="template-card">
 			<section class="content content_tovar-padding">
 				<h1 class="h1 content__header_tovar-margin"></h1>
 				<div class="description">
-					<time datetime="2016-09-09" class="date-published"></time>
+					<time class="date-published"></time>
 					<div class="description-text">
 						<div class="requirement">
 						</div>
 					</div>
 				</div>
 				<div class="block-image-tovar">
-					<img class="image-tovar__image" src="images/phone.png" alt="phone">
+					<img class="image-tovar__image" src="#" alt="phone">
 					<div class="price-tovar"></div>
 					<button class="button-in-basket">В корзину</button>
 				</div>
@@ -137,7 +88,44 @@
 				</ul>
 			</section>
 		</template>
-
+		<template class="template-header-cart">
+			<header class="header">
+				<ul class="nav-items">
+					<li class="nav-items__item">
+						<div class="nav-items__circle nav-items__circle_accessible">
+							1
+							<div class="nav-items__name nav-items__name_accessible">
+								КОРЗИНА
+							</div>
+						</div>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle">
+							2
+							<div class="nav-items__name nav-items__name_accessible">
+								ОПЛАТА
+							</div>
+						</div>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle">
+							3
+							<div class="nav-items__name">
+								ДОСТАВКА
+							</div>
+						</div>
+					</li>
+					<li class="nav-items__item">
+						<div class="nav-items__circle">
+							4
+							<div class="nav-items__name">
+								ЗАВЕРШЕНО
+							</div>
+						</div>
+					</li>
+				</ul>
+			</header>
+		</template>
 		<template class="template__cart1">
 			<div class="wrapper-basket">
 				<header class="header">
@@ -153,7 +141,7 @@
 						<li class="nav-items__item">
 							<div class="nav-items__circle">
 								2
-								<div class="nav-items__name nav-items__name_accessible">
+								<div class="nav-items__name">
 									ОПЛАТА
 								</div>
 							</div>
@@ -184,16 +172,6 @@
 							<th class="basket-table__cell_header-column">ИТОГО</th>
 							<th class="basket-table__cell_header-column"></th>
 						</tr>
-						<!-- <tr class="basket-table__string">
-							<td class="basket-table__cell_header-string">Оформление договора</td>
-							<td class="basket-table__cell">$399</td>
-							<td class="basket-table__cell">$399</td>
-							<td class="basket-table__cell basket-table__cell_column-four">
-								<button class="button-delete">
-									<img  class="button-delete__image" src="images/button-delete.svg" alt="button-delete">
-								</button>
-							</td>
-						</tr> -->
 					</table>
 					<footer class="footer">
 						<div class="total-amount">
@@ -204,7 +182,7 @@
 								&#36;549<span class="total-amount__cents">99</span>
 							</div>
 						</div>
-						<a class="button-general button-next" href="cart_2.html">ДАЛЕЕ</a>
+						<button class="button-general button-next">ДАЛЕЕ</button>
 					</footer>
 				</section>
 			</div>
@@ -220,6 +198,71 @@
 					</button>
 				</td>
 			</tr>
+		</template>
+		<template class="template__cart2">
+			<section class="section-payment clearfix">
+				<div class="card-view">
+					<div class="card-view__card">
+						КАРТА
+					</div>
+					<div class="card-view__view">
+						PAYPAL
+					</div>
+				</div>
+				<div class="form-card__front-side">
+					<div class="form-card__data-card">
+						<input class="form-card__number form-card__style-input" placeholder="Номер карты" tabindex="1">
+						<input class="form-card__month form-card__style-input" placeholder="Месяц" tabindex="2">
+						<input class="form-card__year form-card__style-input" placeholder="Год" tabindex="3">
+					</div>
+					<div class="form-card__logotips">
+						<img class="form-card__master-card" src="images/master-card.svg" alt="master-card">
+						<img class="form-card__visa" src="images/visa.svg" alt="visa">
+					</div>
+					<input class="form-card__full-name form-card__style-input" placeholder="Имя Владельца" tabindex="4">
+				</div>
+				<div class="form-card__back-side">
+					<div class="form-card__band">
+					</div>
+					<input class="form-card__cvv form-card__style-input" placeholder="CVV" tabindex="5">
+					<div class="form-card__prompt">
+						Код на обратной стороне
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<button class="button-general button-back" href="cart_1.html">Вернуться назад</button>
+				<button class="button-general button-pay">Оплатить</button>
+			</section>
+		</template>
+		<template class="template__cart3">
+			<section class="section-delivery clearfix">
+				<div class="delivery-title">
+					КОНТАКТНАЯ ИНФОРМАЦИЯ
+				</div>
+				<div class="form-contact">
+					<input type="text" class="form-contact__surname" placeholder="Фамилия">
+					<input type="text" class="form-contact__name" placeholder="Имя">
+					<input type="text" class="form-contact__phone" placeholder="Телефон">
+					<input type="email" class="form-contact__e-mail" placeholder="E-mail">
+				</div>
+				<button class="button-general button-finish">ЗАВЕРШИТЬ</button>
+			</section>
+		</template>
+		<template class="template__cart4">
+			<section class="section-completed">
+				<div class="checkmark-completed">
+				</div>
+				<div class="message-one">
+					Поздравляем!<br>
+ 				Ваш заказ был принят!
+				</div>		
+				<div class="message-two">
+					В ближайшее время с Вами свяжется наш менеджер
+					<br>для уточнения данных по заказу
+					<br>и расскажет что же ожидает вас в будущем.
+				</div>
+				<button class="button-general button-close">Закрыть</button>
+			</section>
 		</template>
 		<script type="text/javascript" src="js/common.js"></script>
 	</body>

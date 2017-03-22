@@ -190,7 +190,7 @@ a{
 	font-size: 0.75rem;
 	color: white;
 	letter-spacing: 0.15rem;
-	padding-top: 1.063rem;
+	/*padding-top: 1.063rem;*/
 }
 
 .button-next{
@@ -407,7 +407,7 @@ a{
   	background: white;
   	font-size: 0.875rem;
   	letter-spacing: 0;
-  	padding-top: 0.788rem;
+  	/*padding-top: 0.788rem;*/
 }
 
 .button-back:hover{
@@ -539,4 +539,14 @@ padding: 5.063rem 14.75rem 8.375rem 9.906rem;
 	background: white;
 	margin: 5.563rem auto 0;
 	color: #212121;
+}
+
+.basket-loading{
+	background: rgba(0,0,0,0.8) url("../images/loading.gif") no-repeat center center;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 2;
 }

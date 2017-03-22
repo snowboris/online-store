@@ -1,133 +1,25 @@
 ;(function() {
-	/*var arrTovar=[{
-		li_class:"application-package__package",
-		link_href : "#",
-		img_class: "application-package__image",
-		img_src: "images/shot-1.png",
-		img_alt: "standart package",
-		header_class: "application-package__header",
-		header_text: "СТАНДАРТНЫЙ ПАКЕТ",
-		time_class: "application-package__date",
-		time_datetime: "2012-04-08",
-		time_text: "08 апреля 2012"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "new-cft-bank.html",
-		img_class: "application-package__image",
-		img_src: "images/shot-2.png",
-		img_alt: "phone",
-		header_class: "application-package__header",
-		header_text: "НОВЫЙ ЦФТ-БАНК",
-		time_class: "application-package__date",
-		time_datetime: "2016-09-09",
-		time_text: "09 сентября 2016"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "#",
-		img_class: "application-package__image",
-		img_src: "images/shot-3.png",
-		img_alt: "phone2",
-		header_class: "application-package__header",
-		header_text: "КАТАЛОГ РАЗРАБОТОК",
-		time_class: "application-package__date",
-		time_datetime: "2015-03-03",
-		time_text: "03 марта 2015"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "#",
-		img_class: "application-package__image",
-		img_src: "images/shot-1.png",
-		img_alt: "standart package",
-		header_class: "application-package__header",
-		header_text: "СТАНДАРТНЫЙ ПАКЕТ",
-		time_class: "application-package__date",
-		time_datetime: "2012-04-08",
-		time_text: "08 апреля 2012"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "new-cft-bank.html",
-		img_class: "application-package__image",
-		img_src: "images/shot-2.png",
-		img_alt: "phone",
-		header_class: "application-package__header",
-		header_text: "НОВЫЙ ЦФТ-БАНК",
-		time_class: "application-package__date",
-		time_datetime: "2016-09-09",
-		time_text: "09 сентября 2016"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "#",
-		img_class: "application-package__image",
-		img_src: "images/shot-3.png",
-		img_alt: "phone2",
-		header_class: "application-package__header",
-		header_text: "КАТАЛОГ РАЗРАБОТОК",
-		time_class: "application-package__date",
-		time_datetime: "2015-03-03",
-		time_text: "03 марта 2015"
-	},
-	{
-		li_class:"application-package__package",
-		link_href : "#",
-		img_class: "application-package__image",
-		img_src: "images/shot-1.png",
-		img_alt: "standart package",
-		header_class: "application-package__header",
-		header_text: "СТАНДАРТНЫЙ ПАКЕТ",
-		time_class: "application-package__date",
-		time_datetime: "2012-04-08",
-		time_text: "08 апреля 2012"
-	}
-	];
-*/
-/*	var randomShowElement = function(arr){
-		var randomIndex = Math.trunc(Math.random()*arr.length);
-		return randomIndex;
-	}
-
-	function showRandomElements(arrTovars){
-		var myUl=document.querySelector(".application-package");
-		myUl.innerHTML="";
-
-		for(i=0; arrTovars.length>0; i++)
-		{
-			if(i==3) break;
-			var randomIndex = randomShowElement(arrTovars);
-			var rezult = arrTovars[randomIndex];
-			createHTML(rezult);
-			arrTovars.splice(randomIndex,1);
-		}
-	}*/
-
 	function createHTML(rezult,mapObject){
 		var myUl=document.querySelector(".application-package");
 
 			var myLi=document.createElement("li");
-			myLi.className = "application-package__package";//rezult.li_class;
+			myLi.className = "application-package__package";
 
 			var link=document.createElement("a");
-			link.href="#";//rezult.link_href;
-
-			
+			link.href="#";			
 
 			var myIMG=document.createElement("img");
-			myIMG.className="application-package__image";//rezult.img_class;
-			myIMG.src=mapObject[rezult.guid];//"images/shot-1.png";//rezult.img_src;
-			//myIMG.alt=rezult.img_alt;
+			myIMG.className="application-package__image";
+			myIMG.src=mapObject[rezult.guid];
 
 			var myHEADER=document.createElement("header");
-			myHEADER.className="application-package__header";//rezult.header_class;
-			myHEADER.innerHTML=rezult.title;//"rezult.header_text";
+			myHEADER.className="application-package__header";
+			myHEADER.innerHTML=rezult.title;
 
 			var myTime=document.createElement("time");
-			myTime.className="application-package__date";//rezult.time_class;
+			myTime.className="application-package__date";
 			var myDate = new Date(rezult.lastUpdate);
-			myTime.setAttribute("datetime", myDate.toLocaleFormat("%Y-%m-%d"));//"2016-09-09";//rezult.time_datetime;
+			myTime.setAttribute("datetime", myDate.toLocaleFormat("%Y-%m-%d"));
 			myTime.innerHTML=myDate.toLocaleFormat("%d ")+getSlantingMonth(myDate.toLocaleFormat("%m"))
 			+myDate.toLocaleFormat(" %Y"); //%B %Y");//"2016-09-09";//rezult.time_text;
 
@@ -137,9 +29,6 @@
 			myLi.appendChild(link);
 			myUl.appendChild(myLi);
 	}
-
-	//showRandomElements(arrTovar.slice());
-	/*window.setInterval(function(){showRandomElements(arrTovar.slice());},4000);*/
 
 	var slider={
 		frame: 0, //относительно последнего индекса массива работаем
@@ -154,9 +43,6 @@
 			this.frame = this.arrPackageAppications.length-1;
 			this.mapObject = this.createMapObjectGuidLink();
 			this.myUl=document.querySelector(".application-package");
-			/*this.arrCircle.forEach(function(item,i,arr){
-				arr[i].addEventListener("click",function(e){slider.slider_items();});
-			});*/
 			for(var i = 0; i < this.arrCircle.length; i++) {
 				this.arrCircle.item(i).addEventListener("click",function(e){slider.slider_items(e);});
 			}
@@ -193,9 +79,7 @@
 				}
 				createHTML(this.arrPackageAppications[index], this.mapObject);
 			}
-		
-			console.log(this.frame);
-			
+					
 			var allCircle =document.querySelectorAll(".application-package-row__item");
 			var elem_active = document.querySelector(".application-package-row__item-active");
 			elem_active.className = "application-package-row__item";
@@ -224,7 +108,6 @@
 					index=0;
 				}
 				createHTML(this.arrPackageAppications[index], this.mapObject);
-				console.log(index);
 			}
 		},
 		showElements: function (index_start){
@@ -302,5 +185,8 @@
 		var button_back = document.querySelector(".application-package_button-back");
 		button_next.addEventListener("click",function(){slider.right();});
 		button_back.addEventListener("click",function(){slider.left();});
+
+		var linkToBasket = document.querySelector(".nav-menu__icon");
+		linkToBasket.innerText = localStorage.length;
 	}
 })();
