@@ -450,9 +450,41 @@
 		xhrInfoApp.send();
 	}
 
+	function loadDataFromJson(url){
+		return  new Promise(function(resolve, reject){
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET",url,true);
+			xhr.onload = function(e){
+				if(xhr.status===200) {
+					resolve(JSON.parse(xhr.responseText));
+					/*var arr_catalog_applications = JSON.parse(xhr.responseText);
+					show_catalog_applications(arr_catalog_applications)*/
+				} else reject("Error!");
+				/*var arr_catalog_applications = JSON.parse(xhr.responseText);
+				show_catalog_applications(arr_catalog_applications);
+				alert(xhr.status);*/
+			}
+			xhr.send();
+		});
+
+	}
+
+	loadDataFromJson("api/apps_list.json").then(
+		function(result){
+			show_catalog_applications(result);
+		}
+		
+	);
+
+	function errorLoadFromJson(status){
+		alert(status);
+	}
 
 	window.onload = function(){
 
+		// loadDataFromJson("api/apps_list.json");
+		//var promise = new Promise();
+/*
 		var xhr = new XMLHttpRequest();
 		xhr.open("GET","api/apps_list.json",true);
 
@@ -462,7 +494,7 @@
 			show_catalog_applications(arr_catalog_applications);
 		}
 
-		xhr.send();
+		xhr.send();*/
 
 		xhrInfoApp = new XMLHttpRequest();
 
