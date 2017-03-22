@@ -1,35 +1,5 @@
 ;(function(){
 	var basket;
-	function getSlantingMonth(mm){
-		switch(mm*1){
-			case 1: return "января";
-				break;
-			case 2: return "февраля";
-				break;
-			case 03: return "марта";
-				break;
-			case 4: return "апреля";
-				break;
-			case 5: return "мая";
-				break;
-			case 6: return "июня";
-				break;
-			case 7: return "июля";
-				break;
-			case 8: return "августа";
-				break;
-			case 9: return "сентября";
-				break;
-			case 10: return "октября";
-				break;
-			case 11: return "ноября";
-				break;
-			case 12: return "декабря";
-				break;
-			default: return "error getMonth!!!";
-				break;
-		}
-	}
 
 	function renderingCardApp(idapp, arrObjectsInfoApp){
 
@@ -457,56 +427,26 @@
 			xhr.onload = function(e){
 				if(xhr.status===200) {
 					resolve(JSON.parse(xhr.responseText));
-					/*var arr_catalog_applications = JSON.parse(xhr.responseText);
-					show_catalog_applications(arr_catalog_applications)*/
 				} else reject("Error!");
-				/*var arr_catalog_applications = JSON.parse(xhr.responseText);
-				show_catalog_applications(arr_catalog_applications);
-				alert(xhr.status);*/
 			}
 			xhr.send();
 		});
 
 	}
 
-	loadDataFromJson("api/apps_list.json").then(
-		function(result){
-			show_catalog_applications(result);
-		}
-		
-	);
-
-	function errorLoadFromJson(status){
-		alert(status);
-	}
-
 	window.onload = function(){
 
-		// loadDataFromJson("api/apps_list.json");
-		//var promise = new Promise();
-/*
-		var xhr = new XMLHttpRequest();
-		xhr.open("GET","api/apps_list.json",true);
+		loadDataFromJson("api/apps_list.json").then(
+			function(result){
+				show_catalog_applications(result);
+			}
+		);
 
-
-		xhr.onload = function(e){
-			var arr_catalog_applications = JSON.parse(xhr.responseText);
-			show_catalog_applications(arr_catalog_applications);
-		}
-
-		xhr.send();*/
-
-		xhrInfoApp = new XMLHttpRequest();
-
-		xhrInfoApp.open("GET","api/app_info.json",true);
-		
-		xhrInfoApp.onload = function(e){
-			var arrObjAppInfo = JSON.parse(xhrInfoApp.responseText);
-			renderingCardApp(0,arrObjAppInfo);
-			
-		}
-
-		xhrInfoApp.send();
+		loadDataFromJson("api/app_info.json").then(
+			function(result){
+				renderingCardApp(0,result);
+			}
+		);
 		
 		basket = new Basket();
 		
